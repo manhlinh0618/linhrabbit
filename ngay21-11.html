@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phenikaa university</title>
+    <link rel="stylesheet" href="ngay21-11.css" />
+  </head>
+
+  <body>
+    <div class="main-menu">
+      <a href="">Trường Kỹ Thuật</a>
+      <a href="">Trường CNTT</a>
+      <a href="">Trường Kinh Tế</a>
+      <a href="">Trường NN-KHXh</a>
+      <a href="">Trường Y-Dược</a>
+      <a href="">Khoa</a>
+      <a href="">Viện</a>
+      <a href="">Trung tâm</a>
+      <a href="">Cán bộ giảng viên</a>
+      <a href="">sinh viên</a>
+      <a href="">Thư viện</a>
+      <a href="">Liên hệ</a>
+    </div>
+    <div class="header">
+      <div class="logo">
+        <h1><strong>PHENIKAA</strong></h1>
+        <p>UNIVERSITY</p>
+      </div>
+      <div class="menu-list">
+        <ul>
+          <li><a href="">Giới thiệu</a></li>
+          <li><a href="">Tin tức</a></li>
+          <li><a href="">Tuyển sinh</a></li>
+          <li><a href="">Đào tạo</a></li>
+          <li><a href="">Khoa học công nghệ</a></li>
+          <li><a href="">Hợp tác đối ngoại</a></li>
+          <li><a href="">ĐBCL</a></li>
+          <li><a href="">Tuyển dụng</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="left-column">
+        <div class="featured-article">
+          <img
+            src="https://channel.mediacdn.vn/2020/6/29/photo-1-15933988553691377433035.jpg"
+            alt=""
+          />
+          <p>
+            CÔNG NGHỆ THÔNG TIN Khoa Công nghệ thông tin, Trường Đại học
+            PHENIKAA được thành lập vào tháng 12/2018 với sứ mệnh cung cấp các
+            chương trình đào tạo hiện đại, tiên tiến trong lĩnh vực Công nghệ
+            thông tin, giúp phát huy tối đa năng lực của sinh viên, dựa trên các
+            trụ cột kiến thức - kỹ năng - thái độ, nhằm trang bị cho sinh viên
+            đầy đủ hành trang cần thiết để trưởng thành, có đóng góp tích cực và
+            có chỗ đứng vững vàng trong xã hội. Sinh viên Khoa Công nghệ thông
+            tin tại Trường Đại học PHENIKAA được học tập với đội ngũ giảng viên
+            giàu kinh nghiệm, bao gồm các nhà quản lý và chuyên gia từ doanh
+            nghiệp [1]. Các chương trình đào tạo cung cấp kiến thức nền tảng về
+            khoa học máy tính và phát triển phần mềm, thường xuyên được cập nhật
+            [1]. Sinh viên có cơ hội thực hành trong các phòng thí nghiệm chuyên
+            ngành đạt chuẩn và tiếp cận kiến thức thực tế về các lĩnh vực hiện
+            đại như IoT, trí tuệ nhân tạo, dữ liệu lớn và an toàn thông tin
+            thông qua hoạt động của giảng viên và nghiên cứu viên [1].
+          </p>
+        </div>
+      </div>
+      <div class="right-column">
+        <div>
+          <div class="menu-container">
+            <h4>Danh mục</h4>
+          </div>
+          <div class="right-list">
+            <div class="menu-header" onclick="toggleMenu()">Giới thiệu</div>
+            <ul class="menu-items" id="menuItems">
+              <li class="menu-item">
+                <a href="#" class="menu-link">Đào tạo nội bộ</a>
+              </li>
+              <li class="menu-item">
+                <a href="#" class="menu-link">Báo chí nói về chúng tôi</a>
+              </li>
+              <li class="menu-item">
+                <a href="#" class="menu-link">Giới thiệu Trường</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function toggleMenu() {
+        const menuItems = document.getElementById("menuItems");
+        const menuHeader = document.querySelector(".menu-header");
+
+        menuItems.classList.toggle("show");
+        menuHeader.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>
