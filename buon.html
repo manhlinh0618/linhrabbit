@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trình Tải Lên Video</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: #333;
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 600px;
+        padding: 30px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2575fc;
+        margin-bottom: 10px;
+        font-size: 28px;
+      }
+
+      .subtitle {
+        color: #666;
+        margin-bottom: 30px;
+        font-size: 16px;
+      }
+
+      .upload-area {
+        border: 2px dashed #6a11cb;
+        border-radius: 10px;
+        padding: 40px 20px;
+        margin-bottom: 25px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background-color: #f8f9ff;
+      }
+
+      .upload-area:hover {
+        background-color: #eef2ff;
+        border-color: #2575fc;
+      }
+
+      .upload-icon {
+        font-size: 50px;
+        color: #6a11cb;
+        margin-bottom: 15px;
+      }
+
+      .upload-text {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .upload-hint {
+        font-size: 14px;
+        color: #777;
+      }
+
+      .file-input {
+        display: none;
+      }
+
+      .btn {
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 50px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        margin-top: 10px;
+        box-shadow: 0 4px 15px rgba(37, 117, 252, 0.3);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(37, 117, 252, 0.4);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .comment-section {
+        margin-top: 30px;
+        text-align: left;
+      }
+
+      .comment-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        resize: vertical;
+        min-height: 100px;
+        font-size: 14px;
+        transition: border 0.3s;
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: #6a11cb;
+        box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
+      }
+
+      .file-info {
+        margin-top: 15px;
+        padding: 10px;
+        background-color: #f0f7ff;
+        border-radius: 8px;
+        font-size: 14px;
+        display: none;
+      }
+
+      .success-message {
+        color: #28a745;
+        margin-top: 15px;
+        font-weight: 600;
+        display: none;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 20px;
+        }
+        h1 {
+          font-size: 24px;
+        }
+        .upload-area {
+          padding: 30px 15px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Trình Tải Lên Video</h1>
+      <p class="subtitle">
+        Tải lên bài thuyết trình ngắn của bạn (dưới 3 phút)
+      </p>
+
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-icon">📹</div>
+        <p class="upload-text">Kéo và thả video của bạn vào đây</p>
+        <p class="upload-hint">hoặc nhấp để chọn tệp</p>
+        <input type="file" id="fileInput" class="file-input" accept="video/*" />
+      </div>
+
+      <div class="file-info" id="fileInfo"></div>
+
+      <button class="btn" id="uploadBtn">Tải Lên Video</button>
+
+      <div class="success-message" id="successMessage">
+        Video đã được tải lên thành công!
+      </div>
+
+      <div class="comment-section">
+        <label for="comment" class="comment-label"
+          >Mô tả bài thuyết trình của bạn:</label
+        >
+        <textarea
+          id="comment"
+          placeholder="Nhập mô tả ngắn về bài thuyết trình của bạn..."
+        ></textarea>
+      </div>
+    </div>
+
+    <script>
+            document.addEventListener("DOMContentLoaded", function () {
+              const uploadArea = document.getElementById("uploadArea");
+              const fileInput = document.getElementById("fileInput");
+              const fileInfo = document.getElementById("fileInfo");
+              const uploadBtn = document.getElementById("uploadBtn");
+              const successMessage = document.getElementById("successMessage");
+
+
+              uploadArea.addEventListener("click", function () {
+                fileInput.click();
+              });
+
+              uploadArea.addEventListener("dragover", function (e) {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = "#e6f0ff";
+                uploadArea.style.borderColor = "#2575fc";
+              });
+
+              uploadArea.addEventListener("dragleave", function () {
+                uploadArea.style.backgroundColor = "#f8f9ff";
+                uploadArea.style.borderColor = "#6a11cb";
+              });
+
+              uploadArea.addEventListener("drop", function (e) {
+                e.preventDefault();
+                uploadArea.style.backgroundColor = "#f8f9ff";
+                uploadArea.style.borderColor = "#6a11cb";
+
+                if (e.dataTransfer.files.length) {
+                  handleFileSelection(e.dataTransfer.files[0]);
+                }
+              });
+
+              fileInput.addEventListener("change", function () {
+                if (fileInput.files.length) {
+                  handleFileSelection(fileInput.files[0]);
+                }
+              });
+
+              function handleFileSelection(file) {
+                // Kiểm tra xem có phải là video không
+                if (!file.type.startsWith("video/")) {
+                  alert("Vui lòng chọn một tệp video!");
+                  return;
+                }
+
+                fileInfo.innerHTML = `
+                          <strong>Tên tệp:</strong> ${file.name}<br>
+                          <strong>Loại tệp:</strong> ${file.type}<br>
+                          <strong>Kích thước:</strong> ${(
+                            file.size /
+                            (1024 * 1024)
+                          ).toFixed(2)} MB
+                      `;
+                fileInfo.style.display = "block";
+
+                successMessage.style.display = "none";
+              }
+
+              uploadBtn.addEventListener("click", function () {
+                if (!fileInput.files.length) {
+                  alert("Vui lòng chọn một tệp video trước khi tải lên!");
+                  return;
+                }
+
+                const comment = document.getElementById("comment").value;
+                if (!comment.trim()) {
+                  alert("Vui lòng nhập mô tả cho bài thuyết trình của bạn!");
+                  return;
+                }
+
+                uploadBtn.disabled = true;
+                uploadBtn.textContent = "Đang tải lên...";
+
+                setTimeout(function () {
+                  uploadBtn.disabled = false;
+                  uploadBtn.textContent = "Tải Lên Video";
+                  successMessage.style.display = "block";
+      \
+                  successMessage.scrollIntoView({
+                    behavior: "smooth",
+                  });
+                }, 2000);
+              });
+            });
+    </script>
+  </body>
+</html>
