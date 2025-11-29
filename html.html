@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ví Dụ Báo Điện Tử</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f0f2f5;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: #2c3e50;
+        color: white;
+        border-radius: 8px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+
+      .description {
+        background: white;
+        padding: 25px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .wireframes-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-bottom: 40px;
+      }
+
+      .wireframe-section {
+        flex: 1;
+        min-width: 300px;
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+        color: #2c3e50;
+      }
+      /* Mobile Wireframe Styles */
+
+      .mobile-wireframe {
+        width: 320px;
+        margin: 0 auto;
+        border: 2px solid #7f8c8d;
+        border-radius: 20px;
+        padding: 15px;
+        background: #ecf0f1;
+        min-height: 600px;
+      }
+
+      .mobile-header {
+        background: #34495e;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .mobile-nav {
+        background: #95a5a6;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 15px;
+      }
+
+      .mobile-banner {
+        background: #bdc3c7;
+        height: 150px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 15px;
+      }
+
+      .mobile-news-item {
+        background: #d5dbdb;
+        padding: 12px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+
+      .mobile-footer {
+        background: #34495e;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        margin-top: 15px;
+      }
+      /* Desktop Wireframe Styles */
+
+      .desktop-wireframe {
+        width: 100%;
+        border: 2px solid #7f8c8d;
+        border-radius: 8px;
+        padding: 20px;
+        background: #ecf0f1;
+        min-height: 500px;
+      }
+
+      .desktop-header {
+        background: #34495e;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .desktop-nav {
+        background: #95a5a6;
+        padding: 15px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+      }
+
+      .desktop-content {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+
+      .desktop-sidebar {
+        flex: 1;
+        background: #d5dbdb;
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      .desktop-main {
+        flex: 3;
+        background: #d5dbdb;
+        padding: 15px;
+        border-radius: 8px;
+      }
+
+      .news-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .news-card {
+        background: #bdc3c7;
+        padding: 15px;
+        border-radius: 5px;
+        height: 100px;
+      }
+
+      .desktop-footer {
+        background: #34495e;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .wireframe-label {
+        text-align: center;
+        font-weight: bold;
+        margin: 10px 0;
+        color: #2c3e50;
+      }
+
+      .notes {
+        background: #fff9e6;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 30px;
+        border-left: 4px solid #f39c12;
+      }
+
+      @media (max-width: 768px) {
+        .wireframes-container {
+          flex-direction: column;
+        }
+        .mobile-wireframe {
+          width: 100%;
+          max-width: 320px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>Wireframe Trang Báo Điện Tử</h1>
+        <p>Thiết kế đa nền tảng - Mobile & Desktop</p>
+      </header>
+
+      <div class="wireframes-container">
+        <div class="wireframe-section">
+          <h2 class="section-title">📱 Chế độ xem Mobile</h2>
+          <div class="wireframe-label">Trang chủ - Mobile View</div>
+
+          <div class="mobile-wireframe">
+            <div class="mobile-header">
+              <div>LOGO</div>
+              <div>☰</div>
+            </div>
+
+            <div class="mobile-nav">Tìm kiếm</div>
+
+            <div class="mobile-banner">Tin nóng / Banner chính</div>
+
+            <div class="mobile-news-item">
+              <strong>Tiêu đề tin 1</strong>
+              <p>Mô tả ngắn về tin tức</p>
+            </div>
+
+            <div class="mobile-news-item">
+              <strong>Tiêu đề tin 2</strong>
+              <p>Mô tả ngắn về tin tức</p>
+            </div>
+
+            <div class="mobile-news-item">
+              <strong>Tiêu đề tin 3</strong>
+              <p>Mô tả ngắn về tin tức</p>
+            </div>
+
+            <div class="mobile-footer">Footer - Thông tin liên hệ</div>
+          </div>
+
+          <div class="notes">
+            <h3>Đặc điểm thiết kế Mobile:</h3>
+            <ul>
+              <li>Bố cục một cột dọc</li>
+              <li>Menu hamburger (☰) để tiết kiệm không gian</li>
+              <li>Nội dung xếp chồng theo chiều dọc</li>
+              <li>Kích thước phù hợp thao tác chạm</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="wireframe-section">
+          <h2 class="section-title">💻 Chế độ xem Desktop</h2>
+          <div class="wireframe-label">Trang chủ - Desktop View</div>
+
+          <div class="desktop-wireframe">
+            <div class="desktop-header">
+              <div>LOGO BÁO ĐIỆN TỬ</div>
+              <div>Đăng nhập | Đăng ký</div>
+            </div>
+
+            <div class="desktop-nav">
+              <div>Thời sự</div>
+              <div>Kinh tế</div>
+              <div>Thế giới</div>
+              <div>Thể thao</div>
+              <div>Giải trí</div>
+            </div>
+
+            <div class="desktop-content">
+              <div class="desktop-sidebar">
+                <h3>Danh mục</h3>
+                <ul>
+                  <li>Tin mới nhất</li>
+                  <li>Tin nổi bật</li>
+                  <li>Đọc nhiều</li>
+                  <li>Video</li>
+                </ul>
+              </div>
+
+              <div class="desktop-main">
+                <div
+                  class="mobile-banner"
+                  style="height: 200px; margin-bottom: 20px"
+                >
+                  Banner tin tiêu điểm
+                </div>
+
+                <div class="news-grid">
+                  <div class="news-card">Tin 1</div>
+                  <div class="news-card">Tin 2</div>
+                  <div class="news-card">Tin 3</div>
+                  <div class="news-card">Tin 4</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="desktop-footer">
+              Footer - Thông tin liên hệ & liên kết
+            </div>
+          </div>
+
+          <div class="notes">
+            <h3>Đặc điểm thiết kế Desktop:</h3>
+            <ul>
+              <li>Bố cục đa cột, sử dụng không gian rộng</li>
+              <li>Menu điều hướng ngang đầy đủ</li>
+              <li>Sidebar cho danh mục và nội dung phụ</li>
+              <li>Grid layout cho tin tức</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
